@@ -1,35 +1,80 @@
 body{
-    background-color: white;
-    display: flex;
-    align-items: center;
+    background-color: rgb(245, 200, 225);
+    display: grid;
     justify-content: center;
+    background-image: url(./barbie1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
 canvas {
     border: 1px solid #0000002d;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-    border-radius: 2px;
-    margin-top: 7%;
+    border-radius: 10px;
+    margin-top: 3%;
     color: rgba(255, 255, 255, 0);
+    background-color: white;
+    /* width: 100%;
+    max-width: 800px;
+    height: 400px; */
 }
 .botones{
     display: flex;
-    height: 80%;
+    height: 50%;
     width: 10%;
     list-style-type: none;
     padding: 0;
-    flex-direction: column;
+    flex-direction: row;
     margin-left: 5%;
     margin-top: 8%;
 }
 button{
     margin: 15%;
     background-color: white;
-    height: 5vh;
-    width: 20vh;
+    padding: 0px 40%;
     border: 1px solid #b1b1b11f;
-    border-radius: 2px;
+    border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+button:hover{
+    transition: 0.5s;
+    background-color: #df058a;
+    box-shadow: 0px 0px 20px #df058a;
+}
+.input-file-button:hover{
+    transition: 0.5s;
+    background-color: #df058a;
+    box-shadow: 0px 0px 20px #df058a;
 }
 img{
     height: 20px;
 }
+
+/* .input-file-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  } */
+
+  /* Estilo para el botón */
+  .input-file-button {
+    background-color: #fff;
+    padding: 6px 13%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 78%;
+    background-color: white;
+    border: 1px solid #b1b1b11f;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    
+  }
+
+  /* Estilo para el input type="file" */
+  .input-file {
+   
+    opacity: 0;
+    cursor: pointer;
+
+  }

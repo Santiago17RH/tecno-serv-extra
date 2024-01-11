@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="styleF.css">
 </head>
 <body>
-    <canvas id="miCanvas" width="800" height="400"></canvas>
+    <!-- <div> -->
+        <!-- <iframe rel="nofollow" target="_blank" width="1000" height="500" frameborder="0" allowfullscreen="" src="https://viliusle.github.io/miniPaint/"></iframe> -->
+        <canvas id="miCanvas" width="800" height="400"></canvas>
 <div class="botones">
     <button onclick="descargarImagen()"><img src="./descargas.png" alt=""></button>
     <button onclick="usarBorrador()"><img src="./borrador.png" alt=""></button>
     <button onclick="usarPincelNegro()"><img src="./lapiz.png" alt=""></button>
     <button onclick="borrarTodo()"><img src="./boton-remover-redondo.png" alt=""></button>
-</div>
+
+    <div class="input-file-container">
+        <label for="archivo" class="input-file-button">Cargar</label>
+        <input type="file" id="archivo" class="input-file" />
+        <div class="file-name" id="file-name"></div>
+      </div>
+      
+<!-- </div> -->
+    
 </body>
 <script src="scriptF.js"></script>
 </html>
