@@ -18,9 +18,9 @@ const validateUsuario = [
     check('correo')
     .exists()
     .notEmpty()
-    .isEmail()
     .isLength({ min: 5, max: 150 })
-    .withMessage('Ingrese bien el correo, no mayor a 150 caracteres'),
+    .isEmail()
+    .withMessage('Ingrese bien el correo con su respectiva estructura, no mayor a 150 caracteres'),
 
     check('rolUsuario')
     .exists()
