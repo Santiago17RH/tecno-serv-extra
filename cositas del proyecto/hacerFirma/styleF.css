@@ -1,8 +1,8 @@
 body{
-    background-color: rgb(245, 200, 225);
+    background-color: rgb(231, 231, 231);
     display: grid;
     justify-content: center;
-    background-image: url(./barbie1.png);
+    /* background-image: url(./barbie1.png); */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -14,10 +14,24 @@ canvas {
     margin-top: 3%;
     color: rgba(255, 255, 255, 0);
     background-color: white;
-    /* width: 100%;
-    max-width: 800px;
-    height: 400px; */
+    width: 800px;
+     /* max-width: 800px; */
+    height: 400px; 
 }
+
+@media screen and (min-width: 1520px) {
+    canvas {
+        margin-top: 20%;
+    }
+}
+@media screen and (max-width: 700px) {
+    canvas {
+        margin-top: 20%;
+        height: 300px; 
+        width: 600px;
+    }
+}
+
 .botones{
     display: flex;
     height: 50%;
@@ -25,7 +39,7 @@ canvas {
     list-style-type: none;
     padding: 0;
     flex-direction: row;
-    margin-left: 5%;
+    margin-left: 15%;
     margin-top: 8%;
 }
 button{
@@ -51,30 +65,30 @@ img{
     height: 20px;
 }
 
-/* .input-file-container {
+/*  */.input-file-container {
     position: relative;
-    overflow: hidden;
-    display: inline-block;
-  } */
+  }
 
   /* Estilo para el botón */
   .input-file-button {
-    background-color: #fff;
-    padding: 6px 13%;
+    /* background-color: #fff; */
+    padding: 6.52px 50%;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 78%;
+    margin-left: 25%;
     background-color: white;
     border: 1px solid #b1b1b11f;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-    
+    float: left;
+    margin-top: 28%;
   }
 
   /* Estilo para el input type="file" */
   .input-file {
-   
     opacity: 0;
     cursor: pointer;
-
+    display: none;
+    position: absolute;
+    
   }

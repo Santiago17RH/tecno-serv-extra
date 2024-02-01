@@ -2,7 +2,7 @@ const { check } = require('express-validator')
 const { validationResultFn } = require('./validateHelper')
 
 const validateTipoEquipo = [
-    check('TipoEquipo')
+    check('tipoEquipo')
     .exists()
     .notEmpty()
     .isLength({ min: 2, max: 30 })

@@ -14,8 +14,8 @@ const TipoDocumentoController = {
 
     createNewTipoDocumento: async (req, res) => {
         try {
-            let { TipoDocumento } = req.body;
-            let resultadoTipoDocumento = await TipoDocumentoModel.create({ tipo: TipoDocumento });
+            let { tipoDocumento } = req.body;
+            let resultadoTipoDocumento = await TipoDocumentoModel.create({ tipo: tipoDocumento });
             res.json({ message: "Tipo de Documento Creado Con Éxito", resultadoTipoDocumento });
         } catch (error) {
             console.error("Error al crear un nuevo tipo de documento:", error);
@@ -25,9 +25,9 @@ const TipoDocumentoController = {
 
     updateTipoDocumento: async (req, res) => {
         try {
-            let { idTipoDocumento, TipoDocumento} = req.body;
+            let { idTipoDocumento, tipoDocumento} = req.body;
             let resultadoAcTipoDocumento = await TipoDocumentoModel.update(
-                { tipo: TipoDocumento },
+                { tipo: tipoDocumento },
                 { where: { id_tipo_doc: idTipoDocumento } }
             );
             res.json({ message: "El Tipo de Documento Fue Actualizada Con Éxito", resultadoAcTipoDocumento });

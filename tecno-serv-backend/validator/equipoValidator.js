@@ -8,10 +8,10 @@ const validateEquipo = [
     .isLength({ min: 5, max: 20 })
     .withMessage('El minimo de dijitos en el documento de identidad es 5 y el maximo 20'),
 
-    check('placaNumeroSerie')
+    /* check('placaNumeroSerie')
     .exists()
     .notEmpty()
-    .withMessage('Ingrese la placa o numero de serie'),
+    .withMessage('Ingrese la placa o numero de serie'), */
 
     check('marca')
     .exists()

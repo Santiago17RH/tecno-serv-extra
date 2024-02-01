@@ -12,7 +12,7 @@ const TipoDocumentoModel = require("./models/TipoDocumentoModel")
 const TipoEquipoModel = require("./models/TipoEquipoModel")
 const UbicacionModel = require("./models/UbicacionModel")
 const UsuarioModel = require("./models/UsuarioModel") 
-
+const ModificacionPCModel = require("./models/ModificacionPCModel")
 
 //1:1
 UsuarioModel.hasOne(CredencialModel, {foreignKey:"doc_identidad"})
@@ -53,12 +53,17 @@ EquipoModel.belongsTo(ProveedorModel, {foreignKey:"identificacion_prov"})
 EquipoModel.hasMany(HistorialMovModel, {foreignKey:"id_equipo", as:"historial"})
 HistorialMovModel.belongsTo(EquipoModel, {foreignKey:"id_equipo"})
 
+
+
+EquipoModel.hasMany(ModificacionPCModel, {foreignKey:"id_equipo", as:"modificacion"})
+ModificacionPCModel.belongsTo(EquipoModel, {foreignKey:"id_equipo"})
+
 /* 
 
 EquipoModel.hasMany(ActaModel, {foreignKey:"id_equipo", as:"acta"})
 ActaModel.belongsTo(EquipoModel, {foreignKey:"id_equipo"})
- */
 
+*/
 
 // Como es muchos a muchos, ¿tambien es hasMany?
 

@@ -9,15 +9,34 @@ const moment = require("moment");
 const jwt = require("jwt-simple");
 
 const UsuarioController = {
+
+    getAllUsersSencillo: async (_req, res) => {
+        try {
+            let usuariosCreadosSencillo = await UsuarioModel.findAll({
+                attributes: ['doc_identidad','nombre']
+            });
+            console.log(usuariosCreadosSencillo);
+            res.json({
+                message: "Consulta realizada con exito",
+                usuariosCreadosSencillo
+            });
+        } catch (error) {
+            console.error("Error al obtener usuarios:", error);
+            res.status(500).json({
+                message: "Error al obtener usuarios"
+            });
+        }
+    },
+
     getAllUsers: async (_req, res) => {
         try {
             let usuariosCreados = await UsuarioModel.findAll({
                 include: [{
-                    model: RolModel
+                    model: RolModel/* , attributes:['tipo_rol'] */
                 }, {
-                    model: AreaModel,
+                    model: AreaModel/* , attributes:['tipo_area'] */
                 }, {
-                    model: UbicacionModel
+                    model: UbicacionModel/* , attributes:['lugar'] */
                 }]
             });
             console.log(usuariosCreados);
@@ -32,6 +51,53 @@ const UsuarioController = {
             });
         }
     },
+//Solo pa casos extremos no fake ultima version apk link directo mediafire minecraft pe 1.12.95
+    createCredencialesCargueMasivo: async (req, res) => {
+        try {
+            // Consultar los usuarios que no tienen una credencial asociada
+            let usuariosEPA = await UsuarioModel.findAll({
+                attributes: ['doc_identidad', 'nombre'],
+                include: { model: CredencialModel, attributes: ['doc_identidad'], required: false }
+            });
+    
+            if (usuariosEPA.length > 0) {
+                for (let i = 0; i < usuariosEPA.length; i++) {
+                    let usuario = usuariosEPA[i];
+                    if (!usuario.CredencialModel) {
+                        console.log(`Usuario sin credencial: ${usuario.doc_identidad}`);
+    
+                        let contraseñaEncriptada = await bcrypt.hashSync(usuario.doc_identidad, 10);
+    
+                        let resultadoCredencial = await CredencialModel.create({
+                            doc_identidad: usuario.doc_identidad,
+                            contraseña: contraseñaEncriptada
+                        });
+    
+                        console.log("Credencial creada:", resultadoCredencial);
+                    } else {
+                        console.log(`El usuario ${usuario.doc_identidad} ya tiene una credencial.`);
+                    }
+                }
+            } else {
+                console.log("No hay usuarios sin credenciales.");
+            }
+    
+            res.json({
+                message: "Consulta realizada con éxito",
+                usuariosEPA
+            });
+        } catch (error) {
+            console.error("Error al obtener usuarios:", error);
+            res.status(500).json({
+                message: "Error al obtener usuarios"
+            });
+        }
+    },
+
+        //Ciclo que recorra usuarios sin credencial y que inserte en la tabla credenciales, donde contraseña sea el documento, la foranea es el documeno tambien
+        /* for (const iterator of object) {
+            
+        } */
 
     createNewUser: async (req, res) => {
 

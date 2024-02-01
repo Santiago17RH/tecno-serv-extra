@@ -4,6 +4,19 @@
     let dibujando = false;
     let colorPincel = '#000';
 
+    function ajustarTamañoCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+
+    window.addEventListener('load', () => {
+        ajustarTamañoCanvas();
+    });
+
+    window.addEventListener('resize', () => {
+        ajustarTamañoCanvas();
+    });
+
     canvas.addEventListener('mousedown', (e) => {
         dibujando = true;
         dibujar(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, false);
@@ -11,10 +24,14 @@
 
     canvas.addEventListener('mousemove', (e) => {
         if (dibujando) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
             if (colorPincel === 'rgba(0, 0, 0, 0)') {
-                usarBorrador(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                usarBorrador(x, y);
             } else {
-                dibujar(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, true);
+                dibujar(x, y, true);
             }
         }
     });
@@ -45,7 +62,7 @@
     window.descargarImagen = function () {
         const enlace = document.createElement('a');
         enlace.href = canvas.toDataURL('image/png');
-        enlace.download = 'mi firma.png';
+        enlace.download = 'mi_firma.png';
 
         document.body.appendChild(enlace);
 

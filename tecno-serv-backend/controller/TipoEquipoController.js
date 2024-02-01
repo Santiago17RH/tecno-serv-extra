@@ -14,8 +14,8 @@ const TipoEquipoController = {
 
     createNewTipoEquipo: async (req, res) => {
         try {
-            let { TipoEquipo } = req.body;
-            let resultadoTipoEquipo = await TipoEquipoModel.create({ tipo_equipo: TipoEquipo });
+            let { tipoEquipo } = req.body;
+            let resultadoTipoEquipo = await TipoEquipoModel.create({ tipo_equipo: tipoEquipo });
             res.json({ message: "Tipo de Equipo Creado Con Éxito", resultadoTipoEquipo });
         } catch (error) {
             console.error("Error al crear un nuevo Tipo de Equipo:", error);
@@ -25,9 +25,9 @@ const TipoEquipoController = {
 
     updateTipoEquipo: async (req, res) => {
         try {
-            let { idTipoEquipo, TipoEquipo} = req.body;
+            let { idTipoEquipo, tipoEquipo} = req.body;
             let resultadoAcTipoEquipo = await TipoEquipoModel.update(
-                { tipo_equipo: TipoEquipo },
+                { tipo_equipo: tipoEquipo },
                 { where: { id_tipo_equipo: idTipoEquipo } }
             );
             res.json({ message: "Tipo de Equipo Fue Actualizada Con Éxito", resultadoAcTipoEquipo });

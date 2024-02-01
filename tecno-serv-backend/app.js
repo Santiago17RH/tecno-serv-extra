@@ -3,9 +3,9 @@ const { engine } = require('express-handlebars');
 const myconnection = require('express-myconnection');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const sequelize = require('./model/conexionbd')
+const sequelize = require('./model/conexionbd');
 
-require('./model/relaciones')
+require('./model/relaciones');
 
 //Archivo enrutador API V01
 const routerFile = require('./router/router')
@@ -44,6 +44,7 @@ app.listen(puerto, ()=>{
         console.log('Error por zunga: ' + error)
     });
 });
+
 
 app.use('/api-tecnoserv-v01', routerFile);
 

@@ -10,7 +10,7 @@ doc_identidad: {
     allowNull: false
 },
 img: {
-    type: DataTypes.STRING(150),
+    type: DataTypes.STRING(250),
     allowNull: false
 }
 

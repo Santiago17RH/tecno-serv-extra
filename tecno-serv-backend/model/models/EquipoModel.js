@@ -37,8 +37,8 @@ procesador:{
     type: DataTypes.STRING(30),
     allowNull: false
 },
-descripcion:{
-    type: DataTypes.STRING(500),
+nombre_red:{
+    type: DataTypes.STRING(50),
     allowNull: false
 },
 sistema_operativo:{
